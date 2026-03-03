@@ -9,6 +9,7 @@ import com.mibanco.apigastos.infra.web.dto.GastoRequestDTO;
 import com.mibanco.apigastos.infra.web.dto.GastoResponseDTO;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -23,6 +24,14 @@ public class GastoServiceImpl implements GastoService {
 
     @Override
     public GastoResponseDTO agregar(GastoRequestDTO gastoDto) {
+
+        if(gastoDto.titulo() == null || gastoDto.titulo().trim().isEmpty()) throw new AppException("El titulo es obligatorio");
+        if(gastoDto.motivo() == null || gastoDto.motivo().trim().isEmpty()) throw new AppException("El motivo es obligatorio");
+        if(gastoDto.fecha() == null) throw new AppException("La fecha es obligatoria");
+        if(gastoDto.monto() == null) throw new AppException("El monto es obligatorio");
+
+        if(gastoDto.monto().compareTo(BigDecimal.ZERO) <= 0) throw new AppException("El monto debe ser mayor a 0");
+
         Gasto gasto = gastoMapper.toEntity(gastoDto);
         Gasto gastoGuardado = gastoRepository.agregar(gasto);
         return gastoMapper.toDTO(gastoGuardado);
@@ -32,7 +41,14 @@ public class GastoServiceImpl implements GastoService {
     public GastoResponseDTO actualizar(String id, GastoRequestDTO gastoDto) {
         Gasto gasto = gastoRepository.buscarPorId(id);
 
-        if(gasto == null) throw new AppException("id", "Gasto no encontrado");
+        if(gasto == null) throw new AppException("Gasto no encontrado");
+
+        if(gastoDto.titulo() == null || gastoDto.titulo().trim().isEmpty()) throw new AppException("El titulo es obligatorio");
+        if(gastoDto.motivo() == null || gastoDto.motivo().trim().isEmpty()) throw new AppException("El motivo es obligatorio");
+        if(gastoDto.fecha() == null) throw new AppException("La fecha es obligatoria");
+        if(gastoDto.monto() == null) throw new AppException("El monto es obligatorio");
+
+        if(gastoDto.monto().compareTo(BigDecimal.ZERO) <= 0) throw new AppException("El monto debe ser mayor a 0");
 
         gasto.setTitulo(gastoDto.titulo());
         gasto.setMotivo(gastoDto.motivo());
@@ -48,7 +64,7 @@ public class GastoServiceImpl implements GastoService {
 
         Gasto gasto = gastoRepository.buscarPorId(id);
 
-        if(gasto == null) throw new AppException("id", "Gasto no encontrado");
+        if(gasto == null) throw new AppException("Gasto no encontrado");
 
         gastoRepository.eliminar(id);
     }
@@ -61,8 +77,8 @@ public class GastoServiceImpl implements GastoService {
     @Override
     public List<GastoResponseDTO> listarPorMesAnio(Integer mes, Integer anio) {
 
-        if(mes < 1 || mes > 12) throw new AppException("mes", "Mes inválido");
-        if(anio < 1900 ) throw new AppException("anio", "Año inválido");
+        if(mes < 1 || mes > 12) throw new AppException("Mes inválido");
+        if(anio < 1900 ) throw new AppException("Año inválido");
 
         return gastoRepository.listarPorMesAnio(mes, anio)
                 .stream().map(gastoMapper::toDTO).toList();
