@@ -1,0 +1,16 @@
+[
+  {
+    "id": "40e4d24c-365f-4dae-a2ab-89963170c2e4",
+    "titulo": "Cine",
+    "motivo": "Salida al cine con amigos",
+    "fecha": "2025-09-15",
+    "monto": 200.00
+  },
+  {
+    "id": "00125db5-67bc-4959-9704-b462c4e3f38f",
+    "titulo": "Viaje",
+    "motivo": "Viaje a Machu Picchu",
+    "fecha": "2025-09-20",
+    "monto": 3000.00
+  }
+]
