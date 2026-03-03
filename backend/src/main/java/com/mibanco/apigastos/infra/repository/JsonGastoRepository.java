@@ -2,24 +2,25 @@ package com.mibanco.apigastos.infra.repository;
 
 import com.mibanco.apigastos.domain.model.Gasto;
 import com.mibanco.apigastos.domain.repository.GastoRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
 @Component
 public class JsonGastoRepository implements GastoRepository {
-    private final Path filePath = Paths.get("app/data/gastos.json");
-    private final ObjectMapper mapper = new ObjectMapper();
+    private final Path filePath;
+    private final ObjectMapper mapper;
 
-    public JsonGastoRepository(){
+    public JsonGastoRepository(@Qualifier("gastosPath") Path filePath, ObjectMapper mapper){
+        this.filePath = filePath;
+        this.mapper = mapper;
         existeArchivo();
     }
 
@@ -61,9 +62,8 @@ public class JsonGastoRepository implements GastoRepository {
 
     @Override
     public List<Gasto> listar() {
-        List<Gasto> gastos = mapper.readValue(filePath, new TypeReference<>() {
+        return mapper.readValue(filePath, new TypeReference<>() {
         });
-        return gastos;
     }
 
     @Override
