@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión API de Gastos</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container my-4">
+    <h1 class="text-center mb-4">Gestión API de Gastos</h1>
+
+    <!-- Filtros -->
+    <div class="row mb-3">
+      <div class="col-md-3">
+        <input type="number" id="mesFiltro" class="form-control" placeholder="Mes (1-12)">
+      </div>
+      <div class="col-md-3">
+        <input type="number" id="anioFiltro" class="form-control" placeholder="Año (YYYY)">
+      </div>
+      <div class="col-md-3">
+        <button id="btnFiltrar" class="btn btn-primary w-100">Filtrar</button>
+      </div>
+      <div class="col-md-3">
+        <button id="btnAgregar" class="btn btn-success w-100">Agregar Gasto</button>
+      </div>
+    </div>
+
+    <!-- Tabla de gastos -->
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Título</th>
+            <th>Motivo</th>
+            <th>Fecha</th>
+            <th>Monto</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody id="tablaGastos"></tbody>
+      </table>
+    </div>
+
+    <!-- Total -->
+    <div class="text-end mt-3">
+      <h5>Total: <span id="totalGastos">0.00</span></h5>
+    </div>
+  </div>
+
+  <!-- Modal Formulario -->
+  <div class="modal fade" id="modalGasto" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="formGasto">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitulo">Agregar Gasto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="gastoId">
+            <div class="mb-3">
+              <label for="titulo" class="form-label">Título</label>
+              <input type="text" id="titulo" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="motivo" class="form-label">Motivo</label>
+              <input type="text" id="motivo" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="fecha" class="form-label">Fecha</label>
+              <input type="date" id="fecha" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="monto" class="form-label">Monto</label>
+              <input type="number" step="0.01" min="0.01" id="monto" class="form-control" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- App JS -->
+  <script type="module" src="app.js"></script>
+</body>
+
+</html>
