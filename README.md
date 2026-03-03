@@ -244,11 +244,29 @@ La aplicación incluye una interfaz web con:
 - **Total acumulado** de gastos
 - **Modal formulario** para agregar/editar gastos
 
-Flujos básicos:
+**Flujos básicos:**
 - **Agregar:** Click en "Agregar Gasto" → Llenar formulario → Guardar
 - **Editar:** Click en "Editar" → Modificar datos → Guardar
 - **Eliminar:** Click en "Eliminar" → Confirmar
 - **Filtrar:** Ingresar mes/año → Click "Filtrar" (dejar vacíos para ver todos)
+
+**UI:**
+
+#### Pagina principal
+
+<img width="1072" height="550" alt="image" src="https://github.com/user-attachments/assets/72577649-d84b-4f61-a340-991d1955b1e3" />
+
+#### Agregar Gasto
+
+<img width="1089" height="585" alt="image" src="https://github.com/user-attachments/assets/2c4bd099-9b5d-4951-a6fd-eb37a6dbf45e" />
+
+#### Editar Gasto
+
+<img width="1124" height="586" alt="image" src="https://github.com/user-attachments/assets/b125cc91-1f6f-4617-8bed-a2aa3edbc3f1" />
+
+#### Eliminar Gasto
+
+<img width="1092" height="499" alt="image" src="https://github.com/user-attachments/assets/1d047f27-8813-4eff-8a65-2a3dea8fc2f0" />
 
 ## Testing
 
@@ -279,6 +297,28 @@ mvn test -Dtest=ApiGestionDeGatosApplicationTests
 # Con reporte
 mvn surefire-report:report
 ```
+
+## Pruebas realizadas a la API mediante Insomnia
+
+### POST Agregar Gasto
+
+<img width="1543" height="353" alt="image" src="https://github.com/user-attachments/assets/569e8407-c671-47d3-a061-9759f7811d2a" />
+
+### GET Listar Gastos
+
+<img width="1544" height="431" alt="image" src="https://github.com/user-attachments/assets/e31a3151-32e4-426f-95e8-99300df0718e" />
+
+### GET Listar Gastos por Mes y Año
+
+<img width="1545" height="375" alt="image" src="https://github.com/user-attachments/assets/0f98912b-be8a-495c-91dd-2824d3c22296" />
+
+### PUT Actualizar Gasto
+
+<img width="1544" height="341" alt="image" src="https://github.com/user-attachments/assets/e4b250e9-4fba-42b6-865f-127bcbc74830" />
+
+### DELETE Eliminar Gasto
+
+<img width="1531" height="397" alt="image" src="https://github.com/user-attachments/assets/bd33f44c-adae-469c-8932-730688af612f" />
 
 ## Automatización CI/CD con GitHub Actions
 
