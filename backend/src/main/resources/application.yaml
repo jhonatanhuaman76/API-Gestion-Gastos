@@ -1,3 +1,6 @@
 spring:
   application:
     name: API-Gestion-de-Gatos
+
+frontend:
+  url: ${FRONTEND_URL}
