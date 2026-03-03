@@ -78,7 +78,7 @@ API-Gestion-de-Gastos/
 ### 2. Clonar el Repositorio
 ```bash
 git clone https://github.com/jhonatanhuaman76/API-Gestion-Gastos.git
-cd "API-Gestion-de-Gastos"
+cd "API-Gestion-Gastos"
 ```
 
 ### 3. Configurar Variables de Entorno
@@ -124,8 +124,8 @@ Todos los campos de los gastos cumplen con las siguientes validaciones:
 
 - **titulo**: Requerido, 3-100 caracteres
 - **motivo**: Requerido, 3-255 caracteres
-- **fecha**: Requerido, formato ISO (YYYY-MM-DD)
-- **monto**: Requerido, > 0, máximo 15 dígitos enteros y 2 decimales
+- **fecha**: Requerido, formato (YYYY-MM-DD)
+- **monto**: Requerido, mayor a 0, máximo 15 dígitos enteros y 2 decimales
 
 ### Endpoints del Backend
 
@@ -238,7 +238,7 @@ GET /mibancoapi/gastos/mes-anio?mes={mes}&anio={anio}
 
 ### Interfaz del Frontend
 
-La aplicación incluye una interfaz web intuitiva con:
+La aplicación incluye una interfaz web con:
 - **Tabla de gastos** con acciones de Editar y Eliminar
 - **Filtros** por mes (1-12) y año (YYYY)
 - **Total acumulado** de gastos
@@ -289,7 +289,7 @@ El proyecto incluye un workflow de GitHub Actions para:
 
 ## Prompts utilizados
 
-Se utilizó el siguiente prompt para Microsoft Copilot IA para generar la interfaz web para agilizar el desarrollo del frontend:
+Se utilizó el siguiente prompt en Microsoft Copilot IA para generar la interfaz web con el fin de agilizar el desarrollo del frontend:
 
 ```
 Actúa como un desarrollador frontend senior.
