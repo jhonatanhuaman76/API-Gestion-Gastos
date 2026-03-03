@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### JSON data ###
+app/data/gastos.json
